@@ -5,19 +5,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidnews.Categorydetail;
 import com.example.androidnews.R;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 public class FragmentCategory extends Fragment {
 
     View view;
     TextView business, entertainment, health, science, sports;
+    CardView bisnis, tainment, kesehatan, ipa, olahraga;
 
     @Nullable
     @Override
@@ -25,11 +29,13 @@ public class FragmentCategory extends Fragment {
 
         view =  inflater.inflate(R.layout.fragment_category, container, false);
 
+
         business = view.findViewById(R.id.business);
         entertainment = view.findViewById(R.id.entertainment);
         health = view.findViewById(R.id.health);
         science = view.findViewById(R.id.science);
         sports = view.findViewById(R.id.sports);
+
 
         business.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +81,7 @@ public class FragmentCategory extends Fragment {
                 startActivity(intent);
             }
         });
+
 
 
 

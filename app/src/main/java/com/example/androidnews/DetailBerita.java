@@ -2,6 +2,7 @@ package com.example.androidnews;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -35,6 +37,7 @@ public class DetailBerita extends AppCompatActivity {
 
         loader = ImageLoader.getInstance();
 
+
         title = getIntent().getStringExtra("title");
         image = getIntent().getStringExtra("urlToImage");
         content = getIntent().getStringExtra("content");
@@ -55,6 +58,7 @@ public class DetailBerita extends AppCompatActivity {
 
        webku.loadUrl(url);
        webku.setWebViewClient(new WebViewClient());
+
 
     }
 }

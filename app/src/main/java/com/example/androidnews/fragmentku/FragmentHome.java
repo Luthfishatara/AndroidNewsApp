@@ -18,6 +18,7 @@ import com.example.androidnews.retrofitconfig.GetJsonAll;
 import com.example.androidnews.retrofitconfig.RetrofitConfigToJson;
 import com.example.androidnews.retrofitjson.News;
 import com.example.androidnews.retrofitjson.NewsList;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class FragmentHome extends Fragment {
     RecyclerView recycler_view;
     MyAdapter myAdapter;
     GridLayoutManager gm;
+    SpinKitView spinKitView1;
 
     View view;
 
@@ -50,12 +52,16 @@ public class FragmentHome extends Fragment {
         newsList = new ArrayList<>();
         myAdapter = new MyAdapter(getContext(), newsList);
         recycler_view.setAdapter(myAdapter);
+        spinKitView1 = view.findViewById(R.id.spin_kit1);
 
         getJsonAll = RetrofitConfigToJson.getResponses();
 
         getJsonAll.getNewsList("id", "133c9504b213421b9b80b51fdcc5eb3b").enqueue(new Callback<NewsList>() {
             @Override
             public void onResponse(Call<NewsList> call, Response<NewsList> response) {
+
+                spinKitView1.setVisibility(View.VISIBLE);
+
                 Log.d("berhasil", response + "");
 
                 newsList = response.body().getArticles();
@@ -67,6 +73,8 @@ public class FragmentHome extends Fragment {
                 myAdapter = new MyAdapter(getContext(), newsList);
                 recycler_view.setAdapter(myAdapter);
                 myAdapter.notifyDataSetChanged();
+
+                spinKitView1.setVisibility(View.GONE);
 
             }
 
